@@ -5,11 +5,14 @@ const currentTheme = localStorage.getItem("theme");
 if (currentTheme == "dark") {
     document.body.classList.toggle("dark-theme");
     Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("dark-theme")});
+
+    toggle.innerText = "🔆";
 }
 else if (currentTheme == "light") {
     document.body.classList.toggle("light-theme");
     Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("light-theme")});
 
+    toggle.innerText = "🌙";
 }
 
 toggle.addEventListener("click", function () {
@@ -20,7 +23,7 @@ toggle.addEventListener("click", function () {
         var theme = document.body.classList.contains("light-theme")
             ? "light"
             : "dark";
-    }
+        }
     else {
         document.body.classList.toggle("dark-theme");
         Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("dark-theme")});
@@ -28,5 +31,6 @@ toggle.addEventListener("click", function () {
             ? "dark"
             : "light";
     }
+    toggle.innerText = theme === "dark" ? "🔆" : "🌙";
     localStorage.setItem("theme", theme);
 });
