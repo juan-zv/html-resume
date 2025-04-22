@@ -90,6 +90,36 @@ header .hero {
     height: auto;
 }
 
+.links {
+    margin: 0.5rem 0.5rem 2.5rem;
+    display: grid;
+    width: 130px;
+    grid-template-columns: 60px 60px;
+    gap: 0.5rem;
+    place-self: center;
+}
+
+.links a {
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    padding: 0.5rem;
+    box-shadow: 3px 3px grey;
+    transition: all 0.1s ease;
+}
+
+.links a:active{
+    background-color: var(--tertiary-color);
+    filter: invert();
+    transform: translateX(3px);
+    box-shadow: 0px 0px grey;
+}
+
 /* MAIN */
 
 main {
