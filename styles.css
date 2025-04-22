@@ -34,6 +34,31 @@ body.dark-theme {
     --secondary-color: #fff;
 }
 
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#toggle-theme {
+    margin: 0 auto;
+    font-size: large;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    box-shadow: 3px 3px grey;
+    transition: all 0.1s ease;
+}
+
+#toggle-theme:active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateX(3px);
+    box-shadow: 0px 0px grey;
+}
+
 .icon {
     filter: none;
 }
@@ -106,11 +131,13 @@ header .hero {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--primary-color);
-    background-color: var(--secondary-color);
     padding: 0.5rem;
     box-shadow: 3px 3px grey;
     transition: all 0.1s ease;
+}
+
+.links img {
+    filter: invert();
 }
 
 .links a:active{
@@ -119,6 +146,8 @@ header .hero {
     transform: translateX(3px);
     box-shadow: 0px 0px grey;
 }
+
+
 
 /* MAIN */
 
@@ -216,9 +245,14 @@ div {
         --secondary-color: #141414;
     }
 
-    .icon.light-theme {
-        filter: none;
+    .links a {
+        background-color: var(--secondary-color);
     }
+
+    .links img {
+        filter: invert();
+    }
+
 }
 
 
