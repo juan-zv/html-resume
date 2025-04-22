@@ -5,17 +5,26 @@ const currentTheme = localStorage.getItem("theme");
 
 console.log(currentTheme);
 
-if (currentTheme == "dark") {
-    document.body.classList.toggle("dark-theme");
-    Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("dark-theme")});
-
-    toggle.innerText = "🔆";
+if (currentTheme == null) {
+    if (prefersDarkScheme.matches) {
+        document.body.classList.toggle("dark-theme");
+        Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("dark-theme")});
+        toggle.innerText = "🔆";
+    } else {
+        document.body.classList.toggle("light-theme");
+        Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("light-theme")});
+        toggle.innerText = "🌙";
+    }
 }
 else if (currentTheme == "light") {
     document.body.classList.toggle("light-theme");
     Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("light-theme")});
-
     toggle.innerText = "🌙";
+}
+else if (currentTheme == "dark") {
+    document.body.classList.toggle("dark-theme");
+    Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("dark-theme")});
+    toggle.innerText = "🔆";
 }
 
 toggle.addEventListener("click", function () {
