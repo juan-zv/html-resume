@@ -90,6 +90,7 @@ header a {
     display: block;
     width: 100%;
     height: 1.5rem;
+    font-size: larger;
     color: var(--primary-color);
     background-color: var(--secondary-color);
     box-shadow: 3px 3px grey;
@@ -160,6 +161,16 @@ main {
 
 hr {
     width: 100%;
+    max-width: 1020px;
+
+}
+
+p {
+    max-width: 600px;
+}
+
+h3 {
+    font-size: x-large;
 }
 
 section {
@@ -181,6 +192,11 @@ div {
 
 #about p{
     text-align: justify;
+    margin: 0.5rem 0;
+}
+
+#about + hr {
+    max-width: 600px;
 }
 
 .job p, .job ul{
@@ -200,8 +216,16 @@ div {
     text-align: justify;
 }
 
+#education + hr {
+    max-width: 600px;
+}
+
 #skills ul {
     list-style-type: none;
+}
+
+#skills + hr {
+    max-width: 645px;
 }
 
 .skill {
@@ -227,6 +251,10 @@ div {
 
 .project p {
     text-align: justify;
+}
+
+footer p {
+    max-width: none;
 }
 
 
