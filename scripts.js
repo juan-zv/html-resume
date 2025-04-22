@@ -2,6 +2,9 @@ const toggle = document.getElementById("toggle-theme");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 const currentTheme = localStorage.getItem("theme");
+
+console.log(currentTheme);
+
 if (currentTheme == "dark") {
     document.body.classList.toggle("dark-theme");
     Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("dark-theme")});
