@@ -1,50 +1,35 @@
-const toggle = document.getElementById("toggle-theme");
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+const toggleButton = document.getElementById("toggle-theme");
+const savedTheme = localStorage.getItem("theme");
+document.body.style.colorScheme = savedTheme || "light"; // Set the initial color scheme based on saved theme
+console.log("Initial color scheme: ", document.body.style.colorScheme);
 
-const currentTheme = localStorage.getItem("theme");
+console.log("Saved theme: ", savedTheme);
 
-console.log(currentTheme);
-
-if (currentTheme == null) {
-    if (prefersDarkScheme.matches) {
-        document.body.classList.toggle("dark-theme");
-        Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("dark-theme")});
-        toggle.innerText = "🔆";
+if (savedTheme == null) {
+    if (window.matchMedia("(prefers-color-scheme: dark)")) {
+        localStorage.setItem("theme", "dark");
+        toggleButton.innerText = "🔆";
     } else {
-        document.body.classList.toggle("light-theme");
-        Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("light-theme")});
-        toggle.innerText = "🌙";
+        localStorage.setItem("theme", "light");
+        toggleButton.innerText = "🌙";
     }
+} else if (savedTheme == "dark") {
+    toggleButton.innerText = "🔆";
 }
-else if (currentTheme == "light") {
-    document.body.classList.toggle("light-theme");
-    Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("light-theme")});
-    toggle.innerText = "🌙";
-}
-else if (currentTheme == "dark") {
-    document.body.classList.toggle("dark-theme");
-    Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("dark-theme")});
-    toggle.innerText = "🔆";
+else if (savedTheme == "light") {
+    toggleButton.innerText = "🌙";
 }
 
-toggle.addEventListener("click", function () {
-
-    if (prefersDarkScheme.matches) {
-        document.body.classList.toggle("light-theme");
-        Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("light-theme")});
-        var theme = document.body.classList.contains("light-theme")
-            ? "light"
-            : "dark";
-        }
-    else {
-        document.body.classList.toggle("dark-theme");
-        Array.from(document.getElementsByClassName('icon')).forEach(element => {element.classList.toggle("dark-theme")});
-        var theme = document.body.classList.contains("dark-theme")
-            ? "dark"
-            : "light";
+toggleButton.addEventListener("click", function () {
+    if (savedTheme === "dark") {
+        document.style.colorScheme = "light";
+        localStorage.setItem("theme", "light");
+        toggleButton.innerText = "🌙";
+    } else if (savedTheme === "light") {
+        document.body.style.colorScheme = "dark";
+        localStorage.setItem("theme", "dark");
+        toggleButton.innerText = "🔆";
     }
-    toggle.innerText = theme === "dark" ? "🔆" : "🌙";
-    localStorage.setItem("theme", theme);
 });
 
 console.log(`
@@ -60,3 +45,4 @@ console.log(`
 ./////...//////..////////.///...//.......////////..//////.///....//....//...////////.
 
 `)
+

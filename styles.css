@@ -40,8 +40,8 @@ button {
     cursor: pointer;
 }
 
-#toggle-theme {
-    margin: 0 auto;
+.theme-btn {
+    margin: 0 0.1rem;
     font-size: large;
     display: block;
     width: 2rem;
@@ -52,11 +52,17 @@ button {
     transition: all 0.1s ease;
 }
 
-#toggle-theme:active {
+.theme-btn:active {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     transform: translateX(3px);
     box-shadow: 0px 0px grey;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .icon {
@@ -278,7 +284,7 @@ footer p {
     }
 
     .links img {
-        filter: invert();
+        filter: none;
     }
 
 }
