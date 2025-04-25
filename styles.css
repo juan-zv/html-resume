@@ -270,13 +270,12 @@ footer p {
         --secondary-color: #fff;
     }
 
-    .icon {
-        filter: invert();
+    a {
+        color: #82c7ff;
     }
 
-    body.light-theme {
-        --primary-color: #fff;
-        --secondary-color: #141414;
+    .icon {
+        filter: invert();
     }
 
     .links a {
@@ -287,8 +286,32 @@ footer p {
         filter: none;
     }
 
+    body.light-mode {
+        --primary-color: #fff;
+        --secondary-color: #141414;
+    }
+
+    body.light-mode .icon {
+        filter: none;
+    }
+
+    body.light-mode .links img {
+        filter: invert();
+    }
 }
 
+body.dark-mode {
+    --primary-color: #141414;
+    --secondary-color: #fff;
+}
+
+body.dark-mode .icon {
+    filter: invert();
+}
+
+body.dark-mode .links img {
+    filter: none;
+}
 
 @media screen and (min-width: 768px) {
     body {

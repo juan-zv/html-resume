@@ -1,36 +1,47 @@
-const toggleButton = document.getElementById("toggle-theme");
-const savedTheme = localStorage.getItem("theme");
-document.body.style.colorScheme = savedTheme || "light"; // Set the initial color scheme based on saved theme
-console.log("Initial color scheme: ", document.body.style.colorScheme);
+const lightModeBtn = document.getElementById('light-btn');
+const darkModeBtn = document.getElementById('dark-btn');
+const systemModeBtn = document.getElementById('system-btn');
+const theme = localStorage.getItem('theme');
 
-console.log("Saved theme: ", savedTheme);
-
-if (savedTheme == null) {
-    if (window.matchMedia("(prefers-color-scheme: dark)")) {
-        localStorage.setItem("theme", "dark");
-        toggleButton.innerText = "🔆";
-    } else {
-        localStorage.setItem("theme", "light");
-        toggleButton.innerText = "🌙";
+if (theme === null) {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        localStorage.setItem('theme', 'dark');
     }
-} else if (savedTheme == "dark") {
-    toggleButton.innerText = "🔆";
+    else {
+        localStorage.setItem('theme', 'light');
+    }
+} else if (theme === 'dark') {
+    document.body.classList.add('dark-mode');
+    document.body.classList.remove('light-mode');
 }
-else if (savedTheme == "light") {
-    toggleButton.innerText = "🌙";
+else if (theme === 'light') {
+    document.body.classList.add('light-mode');
+    document.body.classList.remove('dark-mode');
+}
+else if (theme === 'system') {
+    document.body.classList.remove('dark-mode');
+    document.body.classList.remove('light-mode');
 }
 
-toggleButton.addEventListener("click", function () {
-    if (savedTheme === "dark") {
-        document.style.colorScheme = "light";
-        localStorage.setItem("theme", "light");
-        toggleButton.innerText = "🌙";
-    } else if (savedTheme === "light") {
-        document.body.style.colorScheme = "dark";
-        localStorage.setItem("theme", "dark");
-        toggleButton.innerText = "🔆";
-    }
+lightModeBtn.addEventListener('click', () => {
+    document.body.classList.remove('dark-mode');
+    document.body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light');
 });
+
+darkModeBtn.addEventListener('click', () => {
+    document.body.classList.remove('light-mode');
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+});
+
+systemModeBtn.addEventListener('click', () => {
+    document.body.classList.remove('dark-mode');
+    document.body.classList.remove('light-mode');
+    localStorage.setItem('theme', 'system');
+    
+});
+
 
 console.log(`
 // ASCII Art generated from https://patorjk.com/software/taag/#p=display&w=.&f=3-D&t=Juan%20Zurita
