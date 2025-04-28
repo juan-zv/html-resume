@@ -263,6 +263,27 @@ footer p {
     max-width: none;
 }
 
+#return-top {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    box-shadow: 3px 3px grey;
+    transition: all 0.1s ease;
+    font-size: large;
+    padding-top: 0.5rem;
+}
+
+#return-top:active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateX(3px);
+    box-shadow: 0px 0px grey;
+}
+
 
 @media (prefers-color-scheme: dark) {
     body {

@@ -42,6 +42,16 @@ systemModeBtn.addEventListener('click', () => {
     
 });
 
+// Add event listeners to the return top button
+const returnTopBtn = document.getElementById('return-top');
+
+returnTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 
 console.log(`
 // ASCII Art generated from https://patorjk.com/software/taag/#p=display&w=.&f=3-D&t=Juan%20Zurita
